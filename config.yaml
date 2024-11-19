@@ -1,4 +1,4 @@
 velocity: 4.2
-routeConfig: "route.txt"
+routeConfig: "YQroute.txt"
 libimobiledeviceDir: "libimobiledevice"
 imageDir: "DeveloperDiskImage"
