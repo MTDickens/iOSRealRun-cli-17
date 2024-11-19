@@ -14,7 +14,7 @@ from init import route
 
 import run
 
-import config
+from config import config
 
 
 debug = os.environ.get("DEBUG", False)
@@ -57,16 +57,17 @@ def main():
 
         # get route
         loc = route.get_route()
-        logger.info(f"got route from {config.config.routeConfig}")
+        logger.info(f"got route from {config.routeConfig}")
 
 
         with RemoteServiceDiscoveryService((address, port)) as rsd:
             with DvtSecureSocketProxyService(rsd) as dvt:
                 try:
-                    print(f"已开始模拟跑步，速度大约为 {config.config.v} m/s")
+                    print(f"已开始模拟跑步，速度大约为 {config.velocity} m/s")
+                    print("    若需修改速度，请在 config.yaml 中修改 velocity")
                     print("会无限循环，按 Ctrl+C 退出")
                     print("请勿直接关闭窗口，否则无法还原正常定位")
-                    run.run(dvt, loc, config.config.v)
+                    run.run(dvt, loc, config.velocity)
                 except KeyboardInterrupt:
                     logger.debug("get KeyboardInterrupt (inner)")
                     logger.debug(f"Is process alive? {process.is_alive()}")

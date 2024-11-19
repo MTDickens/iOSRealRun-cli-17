@@ -1,4 +1,4 @@
-v: 3.3
-routeConfig: "HNroute.txt"
+velocity: 4.2
+routeConfig: "route.txt"
 libimobiledeviceDir: "libimobiledevice"
 imageDir: "DeveloperDiskImage"
